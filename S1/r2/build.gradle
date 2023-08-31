@@ -1,0 +1,14 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+application {
+    mainClass = "SumOfFirst100Numbers"
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'SumOfFirst100Numbers'
+    }
+}
