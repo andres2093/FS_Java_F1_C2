@@ -2,6 +2,8 @@ import e1.Singleton;
 import e2.AnalysisLibrary;
 import e2.StockMarketAdapter;
 import e2.StockMarketReport;
+import r1.Motor;
+import r1.MotorElectricoAdapter;
 
 public class Application {
 
@@ -26,5 +28,13 @@ public class Application {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+
+        System.out.println(" ");
+        System.out.println("-----------------R1----------------------");
+
+        Motor motor = new MotorElectricoAdapter();
+        motor.encender();
+        motor.acelerar();
+        motor.apagar();
     }
 }
