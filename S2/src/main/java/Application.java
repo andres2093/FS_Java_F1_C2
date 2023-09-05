@@ -2,6 +2,7 @@ import e1.Singleton;
 import e2.AnalysisLibrary;
 import e2.StockMarketAdapter;
 import e2.StockMarketReport;
+import e3.TextEditor;
 import r1.Motor;
 import r1.MotorElectricoAdapter;
 
@@ -36,5 +37,14 @@ public class Application {
         motor.encender();
         motor.acelerar();
         motor.apagar();
+
+        System.out.println(" ");
+        System.out.println("-----------------E3----------------------");
+
+        TextEditor editor = new TextEditor();
+        editor.onPressSaveButton();
+        editor.onPressSaveOption();
+        editor.onShortcut();
+
     }
 }
