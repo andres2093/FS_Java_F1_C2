@@ -29,4 +29,16 @@ class CalculadoraTest {
         int esperado = 6;
         assertEquals(esperado, calculadora.multiplica(3, 2));
     }
+
+    @Test
+    @DisplayName("Prueba división con except")
+    void divideExceptionTest() {
+        assertThrows(IllegalArgumentException.class, () -> calculadora.divide(100, 0), "No es posible dividir un valor entre 0");
+    }
+
+    @Test
+    @DisplayName("Prueba división")
+    void divideTest() {
+        assertEquals(1, calculadora.divide(50, 50));
+    }
 }
