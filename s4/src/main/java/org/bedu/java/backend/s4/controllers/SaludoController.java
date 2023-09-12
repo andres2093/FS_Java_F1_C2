@@ -1,9 +1,7 @@
 package org.bedu.java.backend.s4.controllers;
 
 import org.bedu.java.backend.s4.models.Saludo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SaludoController {
@@ -24,4 +22,10 @@ public class SaludoController {
 
         return saludo;
     }
+
+    @PostMapping("/saludo")
+    public Saludo saludo(@RequestBody Saludo saludo){
+        return saludo;
+    }
+
 }
