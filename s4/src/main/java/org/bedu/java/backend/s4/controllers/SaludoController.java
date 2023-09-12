@@ -28,4 +28,10 @@ public class SaludoController {
         return saludo;
     }
 
+    @PutMapping("/saludo")
+    public Saludo saluda(@RequestBody Saludo saludo){
+        saludo.setFechaNacimiento(saludo.getFechaNacimiento().plusDays(1));
+        return saludo;
+    }
+
 }
