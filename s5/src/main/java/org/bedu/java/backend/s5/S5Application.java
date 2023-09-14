@@ -1,6 +1,7 @@
 package org.bedu.java.backend.s5;
 
 import org.bedu.java.backend.s5.e1.models.Saludo;
+import org.bedu.java.backend.s5.e2.services.SaludoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,28 +16,43 @@ public class S5Application implements CommandLineRunner {
 
 //	------------------------------------------E1----------------------------------------------
 
+////	@Autowired
+////	Cambia el nivel de acceso de privado a publico para asignar
+////	la instancia y luego regresa de publico a privado
+////	Lo provoca una inicialización lenta
+//	private Saludo saludo;
+//
+////	@Autowired
+//////	No cambia el nivel de acceso
+//////	Pero permite modificar la instancia
+////	public void setSaludo(Saludo saludo){
+////		this.saludo = saludo;
+////	}
+//
 //	@Autowired
-//	Cambia el nivel de acceso de privado a publico para asignar
-//	la instancia y luego regresa de publico a privado
-//	Lo provoca una inicialización lenta
-	private Saludo saludo;
-
-//	@Autowired
-////	No cambia el nivel de acceso
-////	Pero permite modificar la instancia
-//	public void setSaludo(Saludo saludo){
+////	Está es la manera recomendada, ya que no cambia el nivel de acceso
+////	y no permite modificar la instancia
+//	public S5Application(/*@Autowired*/ Saludo saludo) {
 //		this.saludo = saludo;
 //	}
+//
+//	@Override
+//	public void run(String... args) throws Exception {
+//		System.out.println(saludo.getNombre());
+//	}
+
+
+//	------------------------------------------E2----------------------------------------------
+
+	private final SaludoService saludoService;
 
 	@Autowired
-//	Está es la manera recomendada, ya que no cambia el nivel de acceso
-//	y no permite modificar la instancia
-	public S5Application(/*@Autowired*/ Saludo saludo) {
-		this.saludo = saludo;
+	public S5Application(SaludoService saludoService) {
+		this.saludoService = saludoService;
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(saludo.getNombre());
+		System.out.println(saludoService.saluda());
 	}
 }
