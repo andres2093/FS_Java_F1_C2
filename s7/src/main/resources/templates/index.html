@@ -5,9 +5,18 @@
 </head>
 <body>
     <form th:action="@{/registro}" th:object="${usuario}" method="post">
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.getFieldName() + err.getMessage()}"/>
+            </ul>
+        </div>
         <div>
             <label for="nombre">Nombre: </label>
             <input id="nombre" type="text" th:field="*{nombre}">
+        </div>
+        <div>
+            <label for="correo">Correo: </label>
+            <input id="correo" type="email" th:field="*{correo}">
         </div>
         <div>
             <label for="usuario">Usuario: </label>
@@ -16,6 +25,10 @@
         <div>
             <label for="contrasenia">Contraseña: </label>
             <input id="contrasenia" type="password" th:field="*{contrasenia}">
+        </div>
+        <div>
+            <label for="telefono">Teléfono: </label>
+            <input id="telefono" type="tel" th:field="*{telefono}">
         </div>
         <div>
             <label for="rol">Rol: </label>
