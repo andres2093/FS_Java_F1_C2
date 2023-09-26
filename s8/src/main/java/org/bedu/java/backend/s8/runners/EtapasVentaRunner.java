@@ -29,7 +29,7 @@ public class EtapasVentaRunner implements CommandLineRunner {
         etapas.add(creaEtapa("Etapa 5", 5));
         etapas.add(creaEtapa("Etapa 6", 6));
 
-        etapaRepository.saveAll(etapas);
+//        etapaRepository.saveAll(etapas);
     }
 
     private Etapa creaEtapa(String nombre, Integer orden){
