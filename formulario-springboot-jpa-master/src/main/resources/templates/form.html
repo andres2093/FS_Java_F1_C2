@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+<div class="container">
+    <ul class="nav bg-dark">
+        <li class="nav-item">
+            <img th:src="@{/spring-img.png}" style="width:3em; padding:7px" class="px-auto">
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Clientes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+        </li>
+    </ul>
+
+    <h1 th:text="${titulo}" class="text-success border border-primary"></h1>
+
+    <form th:action="@{/form}" th:object="${cliente}" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{nombre}" class="form-control"
+                       th:errorclass="'form-control bg-danger bg-gradient'" style="--bs-bg-opacity: .5;"/>
+                <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+                       class="form-text text-danger">
+                </small>
+            </div>
+        </div>
+        </tr>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Apellido</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{apellido}" class="form-control mb-1"
+                       th:errorclass="'form-control bg-danger bg-gradient'" style="--bs-bg-opacity: .5;"/>
+                <small th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"
+                       class="form-text text-danger">
+                </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{email}" class="form-control mb-1"
+                       th:errorclass="'form-control bg-danger bg-gradient'" style="--bs-bg-opacity: .5;"/>
+                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                       class="form-text text-danger">
+                </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Fecha nacimiento</label>
+            <div class="col-sm-6">
+                <input type="text" th:field="*{fecha}" class="form-control mb-1" placeholder="dd/MM/yyyy"
+                       th:errorclass="'form-control bg-danger bg-gradient'" style="--bs-bg-opacity: .5;"/>
+                <small th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"
+                       class="form-text text-danger">
+                </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <input type="submit" th:value="'Enviar'" class="btn btn-success"/>
+                <a th:href="@{/listar}" type="button" class="btn btn-primary" th:text="'Volver'"></a>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>

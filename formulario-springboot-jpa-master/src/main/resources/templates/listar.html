@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="UTF-8"/>
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+<div class="container">
+    <ul class="nav bg-dark">
+        <li class="nav-item">
+            <img th:src="@{/spring-img.png}" style="width:3em; padding:7px" class="px-auto">
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Clientes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+        </li>
+    </ul>
+    <h1 class="text-success border border-primary" th:text="${titulo}"></h1>
+
+    <a th:href="@{/form}" class="btn btn-success btn-xs">Crear cliente</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Nacimiento</th>
+            <th>Registro creado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cliente: ${clientes}">
+            <td th:text="${cliente.id}"></td>
+            <td th:text="${cliente.nombre}"></td>
+            <td th:text="${cliente.apellido}"></td>
+            <td th:text="${cliente.email}"></td>
+            <td th:text="${cliente.fecha}"></td>
+            <td th:text="${cliente.creadoEn}"></td>
+            <td><a class="btn btn-primary btn-xs" th:href="@{/form/} + ${cliente.id}" th:text="'Editar'"></a></td>
+            <td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${cliente.id}" th:text="'Eliminar'" onclick="return confirm('¿Estás seguro que quieres eliminar?')"></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
